@@ -1,0 +1,1413 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+}
+/* --- 1. FOR CHROME, EDGE, & SAFARI (Webkit) --- */
+
+/* The width of the scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* The "Track" (Background behind the bar) */
+::-webkit-scrollbar-track {
+  background: #050505; /* Very dark grey/black to match your body */
+  border-left: 1px solid #333; /* Subtle separator line */
+}
+
+/* The "Thumb" (The moving golden part) */
+::-webkit-scrollbar-thumb {
+  /* The Metallic Gold Gradient */
+  background: linear-gradient(
+    180deg,
+    /* Vertical gradient */ #bf953f,
+    /* Dark Gold (Top Shadow) */ #fcf6ba,
+    /* Light Gold (Highlight) */ #b38728,
+    /* Rich Gold (Middle) */ #fbf5b7,
+    /* Light Gold (Highlight) */ #aa771c /* Dark Gold (Bottom Shadow) */
+  );
+
+  border-radius: 10px; /* Makes it round like a pill */
+
+  /* This border creates a "padding" effect so the gold doesn't touch the edges */
+  border: 3px solid #050505;
+}
+
+/* Hover Effect (When you grab the scrollbar) */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #ffd700,
+    #fffacd,
+    #ffd700
+  ); /* Brighter, solid gold when active */
+  border: 3px solid #050505;
+}
+
+/* --- 2. FOR FIREFOX (Limited Styling Support) --- */
+/* Firefox cannot do gradients on scrollbars yet, so we use solid colors */
+html {
+  scrollbar-width: auto; /* or 'thin' for a slimmer look */
+  scrollbar-color: #b38728 #050505; /* <Thumb Color> <Track Color> */
+}
+#navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: auto 2rem;
+  background-color: rgb(0, 0, 0);
+  height: 4rem;
+  font-size: 2em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow: hidden;
+  /* border-bottom: 2px solid gold; */
+}
+#navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #bf953f 20%,
+    #fcf6ba 50%,
+    #bf953f 80%,
+    transparent 100%
+  );
+  /* background-size: 200% 100%; */
+  /* animation: shootingStar 5s linear infinite; */
+}
+
+.logoImage {
+  height: 3rem;
+  width: auto;
+  display: block;
+}
+.gcName {
+  color: rgb(255, 213, 28);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animateLogo {
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+  margin: 2rem auto;
+  background: linear-gradient(
+    90deg,
+    #ffd700,
+    #daa00d,
+    #ffffff,
+    #daa00d,
+    #ffd700
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
+  z-index: 20;
+  overflow: hidden;
+  background-color: #000000;
+}
+.bar {
+  width: 100%;
+  height: 5px;
+  background-color: rgb(255, 213, 28);
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+.aboutATX,
+.xplArchives {
+  color: #ffffff;
+  margin: 2rem auto;
+}
+/* Collapsed State (Mobile View) */
+.collapsed {
+  max-height: 240px; /* Only show first few lines */
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+/* Expanded State (Full View) */
+.expanded {
+  max-height: 1000px; /* Large enough to fit all text */
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+/* The Button Styling */
+#toggleBtn {
+  background: transparent;
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  padding: 8px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: none; /* Hidden by default on large screens */
+}
+
+#toggleBtn:hover {
+  background-color: #ffd700;
+  color: #000;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+/* Only activate the collapse feature on screens smaller than 768px */
+#atxText {
+  /* Start collapsed on mobile */
+  max-height: 100px;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+#atxText.expanded {
+  max-height: 1000px;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+#toggleBtn {
+  display: inline-block; /* Show button on mobile */
+}
+
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+.goldText {
+  /* 1. The Font */
+  font-family: "Cinzel", serif; /* Or any bold, serif font looks best in gold */
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.7rem; /* Needs to be big to see the gradient details */
+
+  /* 2. The Perfect Ratio Gradient */
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+
+  /* 3. Clipping background to text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 4. Make text transparent so background shows through */
+  color: transparent;
+
+  /* 5. Optional: Add a subtle glow behind it */
+  filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 0.5));
+  background-size: 200% auto;
+}
+.plusminusWrapper {
+  width: 100%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plusminusImage {
+  width: 90%;
+  height: auto;
+  border-radius: 0.2rem;
+  border: rgb(255, 213, 28);
+}
+.textPara {
+  color: rgb(163, 162, 162);
+  margin-bottom: 2rem;
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --- CSS: GOLD & BLACK THEME --- */
+.owners-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.section-title {
+  color: #ffd700;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Tabs Styling */
+.season-tabs {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tab-btn {
+  background-color: transparent;
+  border: 2px solid #333;
+  color: #888;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 30px; /* Pill shape */
+}
+
+.tab-btn:hover {
+  border-color: #ffd700;
+  color: #232322;
+}
+
+.tab-btn.active {
+  background-color: #ffd700;
+  color: #000;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Grid Layout */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styling */
+.team-card {
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 25px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffd700;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Decorative Gold Line on top of card */
+.team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #ffd700;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover::before {
+  transform: scaleX(1);
+}
+
+.team-name {
+  color: #ffd700;
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.owner-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.owner-name {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Crown Icon (Optional) */
+.crown {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --- CHAMPIONS SECTION STYLING --- */
+.champions-section {
+  text-align: center;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.crown-header {
+  width: fit-content;
+  text-transform: uppercase;
+  margin: 3rem auto 40px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  animation: shine 5s linear infinite;
+  border-bottom: 2px solid #ffd700;
+  border-radius: 25px;
+  padding: 4px 12px;
+}
+
+.champions-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Stacks on mobile */
+  gap: 40px;
+}
+
+/* The Card Design */
+.champion-card {
+  background: transparent;
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 30px;
+  width: 250px;
+  position: relative;
+  /* The Gold Glow Animation */
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.champion-card:hover {
+  transform: translateY(-10px); /* Floats up */
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); /* Intense Glow */
+}
+
+/* The "Season 1" Badge at top */
+.season-badge {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 20px;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.trophy-icon {
+  font-size: 4rem;
+  margin: 20px 0 10px 0;
+  filter: drop-shadow(0 0 10px gold); /* Makes the emoji glow */
+}
+
+.champ-team {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 10px 0;
+  text-transform: uppercase;
+  font-family: "Segoe UI", sans-serif; /* Clean font */
+}
+
+.champ-owner {
+  color: #888;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.gold-text {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 600px) {
+  .champion-card {
+    width: 100%; /* Full width on phone */
+    max-width: 300px;
+  }
+}
+
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --- CSS: PLUS MINUS SCOPED THEME --- */
+.plusminus-winners-section {
+  max-width: 600px;
+  margin: 50px auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.plusminus-winners-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.plusminus-winners-header h2 {
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.plusminus-winners-header p {
+  color: #888;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.plusminus-leaderboard-container {
+  background-color: #1e1e1e;
+  border: 2px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  min-width: 270px;
+}
+
+/* Individual Row Styling */
+.plusminus-winner-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.plusminus-winner-row:last-child {
+  border-bottom: none;
+}
+
+/* Rank Circle (1, 2, 3...) */
+.plusminus-rank-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}
+
+/* Special Styling for Top 3 */
+.plusminus-rank-1 .plusminus-rank-circle {
+  background-color: #ffd700;
+  color: #000;
+  box-shadow: 0 0 10px #ffd700;
+}
+.plusminus-rank-2 .plusminus-rank-circle {
+  background-color: #c0c0c0;
+  color: #000;
+} /* Silver */
+.plusminus-rank-3 .plusminus-rank-circle {
+  background-color: #cd7f32;
+  color: #000;
+} /* Bronze */
+
+/* Player Info */
+.plusminus-player-info {
+  flex-grow: 1;
+}
+
+.plusminus-player-name {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.plusminus-player-wins {
+  color: #ffd700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* Status Badge */
+.plusminus-status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.plusminus-status-claimed {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #28a745; /* Green */
+  border: 1px solid #28a745;
+}
+
+.plusminus-status-pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffd700; /* Gold/Yellow */
+  border: 1px solid #ffd700;
+}
+
+.plusminus-loading-text {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* The Grid Layout */
+#admin-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* The Golden Card */
+.admin-card {
+  background: linear-gradient(
+    135deg,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #fcf6ba;
+  transition: transform 0.2s;
+}
+
+.admin-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Avatar */
+.admin-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid gold;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 15px rgb(35, 35, 35);
+}
+
+/* Text */
+.admin-name {
+  color: #2a1b02;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  font-family: "Cinzel", serif; /* Optional fancy font */
+  line-height: 1.2;
+  background-color: transparent;
+}
+
+.admin-role {
+  display: inline-block;
+  background: rgba(42, 27, 2, 0.1);
+  color: #2a1b02;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(42, 27, 2, 0.3);
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+.winners {
+  margin: 2rem auto;
+}
+/* --- THE GRID --- */
+/* --- THE SCROLLABLE CONTAINER (65% Height) --- */
+#winners-container {
+  width: 100%;
+
+  margin: auto;
+  /* THIS IS THE KEY SETTING: */
+  height: 65vh; /* Takes up 65% of the screen height */
+
+  overflow-y: auto; /* Enables vertical scrolling inside this box */
+  padding: 10px; /* Breathing room for scrollbar */
+
+  /* Optional: A subtle background to define the area */
+  /* background: rgba(254, 234, 144, 0.187); */
+  border-radius: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  scrollbar-width: none;
+  border-bottom: #fbf5b7;
+  flex-wrap: nowrap;
+}
+
+/* --- CUSTOM GOLD SCROLLBAR (Specific to this container) --- */
+#winners-container::-webkit-scrollbar {
+  display: none;
+  width: 10px;
+}
+#winners-container::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+  margin: 10px 0; /* Keeps scrollbar away from very top/bottom */
+}
+#winners-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #bf953f, #fcf6ba, #aa771c);
+  border-radius: 10px;
+  border: 2px solid #1a1a1a; /* Creates padding effect */
+}
+
+/* --- THE WINNER CARD --- */
+.winner-card {
+  background: linear-gradient(135deg, #ffd700, #daa520);
+  border-radius: 15px;
+  padding: 2px;
+  margin-bottom: 20px; /* Space between cards */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+  width: 300px;
+}
+
+.winner-card:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.card-inner {
+  background: #111;
+  border-radius: 13px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.trophy-icon {
+  font-size: 2.5rem;
+  background: linear-gradient(to bottom, #ffd700, #daa520);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: gold;
+  min-width: 50px;
+  text-align: center;
+}
+
+.text-content {
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.winner-name {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 1px;
+  background-color: transparent;
+}
+
+.game-name {
+  color: #daa520;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-style: italic;
+  border-top: 1px solid #333;
+  padding-top: 5px;
+  display: inline-block;
+  background-color: transparent;
+}
+/* "Winner" Label */
+.winner-label {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: transparent;
+}
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+@media (max-width: 500px) {
+  #gcNamePc {
+    display: none;
+  }
+}
+@media (min-width: 500px) {
+  #gcNameMob {
+    display: none;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+@keyframes shootingStar {
+  0% {
+    background-position: -200% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* Section Layout */
+.testimonial-section {
+  padding: 50px 20px;
+  background-color: transparent;
+  text-align: center;
+  overflow: hidden; /* Hides scrollbars */
+}
+
+.gold-title {
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #aa771c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The "Window" - hides everything outside the active card */
+.carousel-window {
+  width: 100%;
+  max-width: 600px; /* Controls how wide the card is */
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* The "Track" - Moves Left/Right */
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth Slide */
+}
+
+/* Individual Slide Container */
+.testimonial-slide {
+  min-width: 100%; /* Forces it to take up the full window */
+  padding: 20px; /* Spacing so shadow doesn't get cut off */
+  box-sizing: border-box;
+  opacity: 0.3; /* Faded out by default */
+  transform: scale(0.9); /* Slightly smaller by default */
+  transition: all 0.8s ease;
+}
+
+/* The Active Class (Added by JS) */
+.testimonial-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* The Card Styling */
+.quote-card {
+  background: #111;
+  border: 1px solid #333;
+  border-bottom: 3px solid #bf953f; /* Gold Bottom */
+  border-radius: 15px;
+  padding: 40px 30px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(255, 217, 0, 0.505);
+}
+
+.big-quote {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  font-size: 5rem;
+  font-family: serif;
+  color: rgba(255, 217, 0, 0.505);
+  line-height: 1;
+  background-color: #111;
+}
+
+.review-text {
+  color: #ddd;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  background-color: #111;
+}
+
+/* User Info */
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align for single card view */
+  gap: 15px;
+  margin-top: 20px;
+  border-top: 1px solid #222;
+  padding-top: 20px;
+  background-color: #111;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #bf953f;
+}
+
+.user-name {
+  color: #fcf6ba;
+  margin: 0;
+  font-size: 1rem;
+  background-color: #111;
+}
+
+.user-role {
+  color: #666;
+  font-size: 0.8rem;
+  display: block;
+  background-color: #111;
+}
+
+/* Progress Bar at bottom */
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: #222;
+  margin-top: 20px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #bf953f, #fcf6ba);
+  /* Animation is handled by JS class */
+}
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* --- SECTION STYLING --- */
+.features-section {
+  padding: 80px 20px;
+  background-color: #050505; /* Deep Black Background */
+  text-align: center;
+}
+
+.gold-heading {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #aa771c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 60px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-color: transparent;
+}
+
+/* --- THE GRID --- */
+.features-grid {
+  display: grid;
+  /* This automatically arranges cards based on screen size */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- THE CARD --- */
+.feature-card {
+  background: linear-gradient(145deg, #111, #0a0a0a); /* Subtle dark gradient */
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden; /* Keeps the glow inside */
+}
+
+/* The Hover Effect: Lift + Gold Glow */
+.feature-card:hover {
+  transform: translateY(-10px); /* Moves up */
+  border-color: #bf953f;
+  box-shadow: 0 0 25px rgba(191, 149, 63, 0.2); /* Soft Gold Glow around card */
+}
+
+/* --- THE ICON --- */
+.icon-box {
+  font-size: 3rem;
+  margin-bottom: 25px;
+
+  /* Gradient Icon Color */
+  background: linear-gradient(to bottom, #ffd700, #daa520);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Adds a drop shadow to the icon */
+  filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3));
+
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover .icon-box {
+  transform: scale(1.1) rotate(5deg); /* Icon pops slightly on hover */
+}
+
+/* --- TEXT STYLING --- */
+.feature-title {
+  color: #fcf6ba; /* Pale Gold */
+  font-size: 1.5rem;
+  font-family: serif;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.feature-desc {
+  color: #aaa; /* Soft Grey for readability */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background-color: transparent;
+}
+
+/* --- DECORATIVE CORNER (Optional Shine) --- */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.05) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover::before {
+  opacity: 1; /* Shows a faint spotlight on hover */
+}
+/* ------------------------------------- */
+/* ------------------------------------- */
+.former-admins {
+  color: rgb(255, 213, 28);
+}
+/* ------------------------------------- */
+/* ------------------------------------- */
+
+/* --- FOOTER STYLES --- */
+.gold-footer {
+  background-color: #050505;
+  /* Matches your body background */
+  padding-bottom: 30px;
+  margin-top: 50px;
+  /* Space away from main content */
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+/* 1. The Fading Gold Line (Top Border) */
+.separate-line {
+  height: 2px;
+  width: 100%;
+  margin-bottom: 30px;
+
+  /* Transparent -> Gold -> Transparent */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #bf953f 20%,
+    #fcf6ba 50%,
+    #bf953f 80%,
+    transparent 100%
+  );
+
+  /* Optional: A subtle glow below the line */
+  box-shadow: 0 1px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* 2. The "Thank You" Title */
+.footer-title {
+  font-family: "Cinzel", serif;
+  /* Or your fancy font */
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+
+  /* The Gold Text Effect */
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #aa771c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 3. The Message Text */
+.footer-text {
+  color: #888;
+  /* Soft Grey */
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 4. The Pulsing Heart Section */
+.footer-heart {
+  color: #555;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.heart-icon {
+  color: #ffd700;
+  /* Gold Heart */
+  animation: heartbeat 1.5s infinite;
+}
+
+.gold-highlight {
+  color: #fcf6ba;
+}
+
+/* --- ANIMATION --- */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.3);
+    text-shadow: 0 0 10px #ffd700;
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.3);
+    text-shadow: 0 0 10px #ffd700;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 1. The Container */
+.shine-box {
+  position: relative; /* Essential for positioning the stars */
+  /* background: transparent; */
+  border: 1px solid #333;
+  padding: 40px;
+  border-radius: 10px;
+  margin: 2rem auto;
+  /* Ensure stars don't get cut off if they overlap the edge slightly */
+  /* overflow: visible; is default, but good to keep in mind */
+}
+
+/* 2. The Shared Star Styles (::before = Top-Left, ::after = Bottom-Right) */
+.shine-box::before,
+.shine-box::after {
+  content: "";
+  position: absolute;
+  width: 25px; /* Size of the star */
+  height: 25px;
+  background: #ffd700; /* Gold Color */
+
+  /* This creates the 4-point "Sparkle" shape */
+  clip-path: polygon(
+    50% 0%,
+    65% 40%,
+    100% 50%,
+    65% 60%,
+    50% 100%,
+    35% 60%,
+    0% 50%,
+    35% 40%
+  );
+
+  /* Adds a glow around the shape */
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+
+  /* The Animation */
+  animation: twinkle 3s ease-in-out infinite;
+  z-index: 10; /* Sits on top of borders */
+}
+
+/* 3. Positioning the Top-Left Star */
+.shine-box::before {
+  top: -12px; /* Pulls it slightly outside the box */
+  left: -12px;
+  animation-delay: 0s;
+}
+
+/* 4. Positioning the Bottom-Right Star */
+.shine-box::after {
+  bottom: -12px;
+  right: -12px;
+  animation-delay: 1.5s; /* Delays it so they twinkle alternately */
+}
+
+/* 5. The Twinkle Animation */
+@keyframes twinkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6) rotate(45deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* Season Selector Styling */
+.controls {
+  margin: 20px auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+select {
+  background-color: #1e1e1e;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+select:hover {
+  background-color: #333;
+}
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  background-color: #1e1e1e;
+  margin: 2rem auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background: linear-gradient(45deg, #ffd700, #daa520);
+  color: #000;
+}
+th,
+td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+  font-size: x-small;
+}
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: small;
+  color: rgb(255, 213, 28);
+}
+tr:nth-child(even) {
+  background-color: #313131;
+}
+tr:hover {
+  background-color: #333;
+  color: #ffd700;
+}
+td:last-child,
+th:last-child {
+  text-align: center;
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.page-info {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffd700;
+  color: #000;
+}
+button:disabled {
+  border-color: #555;
+  color: #555;
+  cursor: not-allowed;
+}
+button:disabled:hover {
+  background-color: transparent;
+}
+option {
+  background-color: #1e1e1e;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* --- CSS FOR GOLD & BLACK THEME --- */
+.google-form-wrapper {
+  background-color: #1e1e1e; /* Dark Card Background */
+  border: 2px solid #ffd700; /* Gold Border */
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 40px auto; /* Centers the form on the page */
+  overflow: hidden; /* Keeps the iframe inside the rounded corners */
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+}
+
+.form-header {
+  text-align: center;
+  padding: 20px;
+  text-align: center;
+  color: #000; /* Black text on Gold background */
+}
+
+.form-header h3 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}
+
+.form-header p {
+  margin: 5px 0 0 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+iframe {
+  display: block; /* Removes weird spacing at the bottom */
+  background-color: #fff; /* Ensures form is readable if it loads slowly */
+  text-align: center;
+  width: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .google-form-wrapper {
+    margin: 20px 10px;
+    border-width: 1px;
+  }
+  iframe {
+    height: 1040px; /* Make it longer on mobile so scrolling isn't weird */
+  }
+}
+/* -------------------------------------- */
+/* -------------------------------------- */

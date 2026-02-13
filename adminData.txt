@@ -1,0 +1,9 @@
+Accelerate, Owner, atx.webp
+Chama, Admin, /adminAvatars/chama.webp
+Isra, Admin, /adminAvatars/israa.webp
+elscryst, Admin, /adminAvatars/elscryst.webp
+MANGAL, Admin, /adminAvatars/mangal.webp
+EchoNyx, Moderator, /adminAvatars/echonyx.webp
+Nur, Moderator, /adminAvatars/nur.webp
+Bindu, Moderator, /adminAvatars/bindu.webp
+NoOrA, Moderator, /adminAvatars/noora.jpg

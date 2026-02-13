@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATX | Arena Team Xtreme</title>
+    <link rel="icon" type="image/png" href="/atx.webp">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <navbar id="navbar">
+
+        <gcNamePc id="gcNamePc" class="gcName animateLogo goldText">
+            <logo class="logoContainer">
+                <img class="logoImage" src="/atx.webp" alt="logoATX">
+            </logo> &nbsp;Arena Team Xtreme&nbsp;<logo class="logoContainer">
+                <img class="logoImage" src="/atx.webp" alt="logoATX">
+            </logo>
+        </gcNamePc>
+        <gcNameMob id="gcNameMob" class="gcName animateLogo goldText">
+            <logo class="logoContainer">
+                <img class="logoImage" src="/atx.webp" alt="logoATX">
+            </logo>&nbsp; ATX &nbsp;<logo class="logoContainer">
+                <img class="logoImage" src="/atx.webp" alt="logoATX">
+            </logo>
+        </gcNameMob>
+        <!-- <menubar class="menuContainer">
+            <menu class="hamburger" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </menu>
+        </menubar> -->
+    </navbar>
+
+    <main>
+        <div class="aboutATX">
+            <h2 class="animateLogo goldText animateLogo">The Spirit of ATX</h2>
+            <p id="atxText" class="textPara collapsed">
+                <strong>ATX (Arena Team Xtreme)</strong> is more than just a group on Plato. It is a bond that grew
+                through Werewolf and slowly turned
+                into something much deeper than a gaming team. From the beginning, ATX was built around WW, bringing
+                together players
+                who enjoyed strategy, smart thinking, and reading each other's moves. Over time, those matches created
+                trust,
+                understanding, and real connections. <br> <br>
+                In ATX, the focus is not only on winning. It is about standing together in every round, supporting each
+                other's
+                decisions, and learning from mistakes as a team. Even when games get intense and emotions rise, respect
+                never fades.
+                Small misunderstandings happen, but they are resolved with maturity and care-that is what makes the
+                group strong. <br> <br>
+                One beautiful thing about ATX is the culture of appreciation. Members notice effort, encourage
+                improvement, and
+                celebrate each other's growth. No one feels small, and everyone gets a chance to shine. Events, friendly
+                competitions,
+                and random game nights have created countless memories filled with laughter and excitement. ATX deserves
+                appreciation
+                because it proves that online friendships can be real and meaningful. It shows that a simple WW group
+                can grow into a
+                family where loyalty, teamwork, and heart matter more than the game itself.
+            </p>
+            <button id="toggleBtn" onclick="toggleText()">Read More</button>
+        </div>
+        <div class="separate-line"></div>
+        <div class="hot" style="margin-bottom: 2rem;">
+            <h2 class="goldText animateLogo">ATX HOT PICK</h2>
+            <div class="plusminusWrapper">
+                <img class="plusminusImage" src="/40±1.webp" alt="40plusminus1">
+            </div>
+            <p class="textPara">
+                🚨🚨🚨 Some tabs will be considered <strong>INVALID</strong> <br> <br>
+                <code>
+                The <strong>INVALID</strong> Tabs are: <br>
+                ● 1v1 Tabs (Example: MM, Dice Party, Mancala,...) <br>
+                ● Turn Based Tabs</code>
+
+            </p>
+
+            <div class="plusminus-winners-section">
+                <div class="plusminus-winners-header">
+                    <h2>Weekly Winners</h2>
+                    <p>Top performers of the <strong>"40 ± 1"</strong> Challenge</p>
+                </div>
+
+                <div id="plusminus-winners-list" class="plusminus-leaderboard-container">
+                    <div class="plusminus-loading-text">Loading Data...</div>
+                </div>
+            </div>
+        </div>
+        <div class="separate-line"></div>
+        <div class="xplArchives">
+            <h2 class="animateLogo goldText">XPL &nbsp;Archives 🔥</h2>
+            <p class="textPara">
+                <strong>Where Strategy Meets Chaos...</strong> <br> <br>
+                The Xtreme Premier League (XPL) isn't just a tournament, it's a war that begins before the first match
+                is even played.
+                From the high-stakes auction room where teams are build, to the final moments of the Tournament, this
+                is where our server's history is written. <br> <br>
+
+                Here lies the record of the legends, the masterminds, and the dynasties of the XPL. Browse the seasons,
+                witness the rise
+                of CHAMPIONS, and relive the glory of the <Strong>Xtreme Premier League</Strong>.
+            </p>
+
+            <div class="owners-section">
+                <h2 class="section-title">Franchise Owners</h2>
+
+                <div class="season-tabs">
+                    <button class="tab-btn active" onclick="showSeason('s2')">Season 2</button>
+                    <button class="tab-btn" onclick="showSeason('s1')">Season 1</button>
+                </div>
+
+                <div id="teams-grid" class="teams-grid">
+                </div>
+            </div>
+
+            <div class="statsOfXpl textPara">
+                <span style="font-family: monospace;">Every player has a price. Here is the official record of who went
+                    where - and for how much.</span>
+                <!-- -------------------------------- -->
+                <!-- -------------------------------- -->
+                <div class="controls">
+                    <label for="seasonSelect" style="color: #FFD700; font-weight: bold;">Select Season:</label>
+                    <select id="seasonSelect" onchange="loadSelectedSeason()">
+                        <option value="s1">Season 1</option>
+                        <option value="s2">Season 2</option>
+                        <!-- <option value="s3">Season 3</option> -->
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table id="auctionTable">
+                        <thead>
+                            <tr>
+                                <th>Plato ID</th>
+                                <th>Team</th>
+                                <th>Sold </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="3">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="prevBtn" onclick="changePage(-1)">&#8592; Previous</button>
+                    <span class="page-info" id="pageInfo">⏳</span>
+                    <button id="nextBtn" onclick="changePage(1)">Next &#8594;</button>
+                </div>
+                <!-- -------------------------------- -->
+                <!-- -------------------------------- -->
+            </div>
+            <!-- <div class="separate-line"></div> -->
+
+            <div class="champions-section">
+                <h2 class="crown-header goldText">
+                    Champions
+                </h2>
+
+                <div class="champions-container">
+
+                    <div class="champion-card">
+                        <div class="season-badge">SEASON 1</div>
+                        <div class="trophy-icon">🏆</div>
+                        <h3 class="champ-team">GREEN FURY</h3>
+                        <p class="champ-owner">Owner: <span class="gold-text">2busy4youu</span></p>
+                    </div>
+
+                    <div class="champion-card">
+                        <div class="season-badge">SEASON 2</div>
+                        <div class="trophy-icon">🏆</div>
+                        <h3 class="champ-team">GREEN FURY</h3>
+                        <p class="champ-owner">Owner: <span class="gold-text">2busy4youu</span></p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="separate-line"></div>
+        <section class="features-section">
+
+            <h2 class="gold-heading">Why We Are Different</h2>
+            <p class="subtitle">Features you won't find in any other GC.</p>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        ⚖️
+                    </div>
+                    <h3 class="feature-title">Chaos Courtroom</h3>
+                    <p class="feature-desc">
+                        Crazy, silly and ridiculous disputes are settled here. An elected Judge and Jury hear your case,
+                        review evidence, and pass
+                        binding sentences.
+                        Justice is blind.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        🔨
+                    </div>
+                    <h3 class="feature-title">The Auction House</h3>
+                    <p class="feature-desc">
+                        Going once, going twice... Sold! <br>
+                        You will hear this before every XPL Season.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">
+                        💰
+                    </div>
+                    <h3 class="feature-title"> HIGH STAKES</h3>
+                    <p class="feature-desc">
+                        Place your TICKETS on any team during XPL games. Climb the leaderboard and flex your instinct.
+                    </p>
+                </div>
+
+
+
+            </div>
+        </section>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="separate-line"></div>
+        <div class="upcoming goldText animateLogo">Coming soon</div>
+        <div class="textPara">History has been written, but the future is being forged. A new chapter of the Xtreme
+            Premier League is currently in
+            development. Keep your eyes on the announcements channel. You won't want to miss what comes next.</div>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="separate-line"></div>
+
+        <div class="winners goldText animateLogo">Winners 🏆</div>
+
+        <p style="color: goldenrod; margin-bottom: 1rem;">The winners of 2026...</p>
+        <div id="winners-container">
+        </div>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="separate-line"></div>
+        <section class="testimonial-section">
+            <h2 class="gold-title animateLogo">What Our Members Say</h2>
+
+            <div class="carousel-window">
+
+                <div class="carousel-track" id="track">
+
+                    <div class="testimonial-slide">
+                        <div class="quote-card">
+                            <div class="big-quote">“</div>
+                            <p class="review-text">
+                                Ty atx beautiful experience especially in ww, I joined last year with half mind and now
+                                I'm living without mind.
+                            </p>
+                            <div class="user-profile">
+                                <img src="https://ui-avatars.com/api/?name=Mike+D&background=FFD700&color=000"
+                                    class="user-img">
+                                <div>
+                                    <h4 class="user-name">MACILYA</h4>
+                                    <span class="user-role">Wis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="quote-card">
+                            <div class="big-quote">“</div>
+                            <p class="review-text">
+                                Ty atx for beautiful memories <br>
+                                Thanks to you, my addiction to plato and ww is back after 4 years; and I quit being a
+                                nerd in uni... <br>
+                                I APPRECIATE THAT FR
+                            </p>
+                            <div class="user-profile">
+                                <img src="https://ui-avatars.com/api/?name=NoOrA&background=FFD700&color=000"
+                                    class="user-img">
+                                <div>
+                                    <h4 class="user-name">__NoOrA__</h4>
+                                    <span class="user-role">NoOrA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="quote-card">
+                            <div class="big-quote">“</div>
+                            <p class="review-text">
+                                I want to say thank you!
+                                Not everyone knew but I had cancer and was fighting against it when I joined ATX <br>
+                                ... So 'ACCELERATE' and EVERYONE thank you for
+                                helping me through the hardest time of my life 💚
+                            </p>
+                            <div class="user-profile">
+                                <img src="https://ui-avatars.com/api/?name=Snape&background=FFD700&color=000"
+                                    class="user-img">
+                                <div>
+                                    <h4 class="user-name">_Snape_16_07</h4>
+                                    <span class="user-role">⚕Ѕnα℘є ⚕</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="testimonial-slide">
+                        <div class="quote-card">
+                            <div class="big-quote">“</div>
+                            <p class="review-text">
+                                Review
+                            </p>
+                            <div class="user-profile">
+                                <img src="/" class="user-img">
+                                <div>
+                                    <h4 class="user-name">Plato</h4>
+                                    <span class="user-role">Discord</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress"></div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="separate-line"></div>
+
+        <h2 class="animateLogo goldText">Meet Our Team</h2>
+
+        <div id="admin-container"></div>
+        <div class="shine-box former-admins" style="font-family: monospace; font-size: larger;">
+            <span class="heart-icon">❤️</span> A big Thanks to our Former Team Members: <br> <br>
+            <strong>Demons_In_Me, 2busy4youu, Foxfy, meduuuu, Aksha_666, nana1105, Nightblade11, SnuffIes,
+                unluck, Floret, dark_side777, Mary, asby, flaw, ibwel, deli, bell</strong>
+        </div>
+        <div class="separate-line"></div>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        <div class="google-form-wrapper">
+            <div class="form-header">
+                <h3>📩 Drop a Suggestion</h3>
+                <p>Help us improve ATX</p>
+            </div>
+
+
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdTvFcaZ5gRzVTCtl84yFPYtbywz2ZKU9Cfkajbxq_UzErj8A/viewform?embedded=true"
+                width="640" height="719" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+        <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+    </main>
+    <footer class="gold-footer">
+
+        <div class="separate-line"></div>
+
+        <div class="footer-content">
+            <h2 class="footer-title">Thank You</h2>
+
+            <p class="footer-text">
+                To every member, admin, Pro and Nab who makes this community legendary. <br>
+                We couldn't do it without you.
+            </p>
+
+            <div class="footer-heart">
+                Made with <span class="heart-icon">❤️</span> by the Staff Team
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
