@@ -1,4 +1,3 @@
-_Snape_16_07, 17, 3000
-Goblinkim, 15, 2000
-__NoOrA__, 11, 1000
-
+_Mini__, 8, 3000
+__NoOrA__, 6, 2000
+pillowmaxx84, 3, 1000
