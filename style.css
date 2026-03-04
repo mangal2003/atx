@@ -495,29 +495,29 @@ main {
 }
 
 .text-forty-plus-minus-one strong {
-  color: var(--gold-bright);
+  color: #ffd700;
 }
 .text-forty-plus-minus-one {
-  border-left: 4px solid var(--gold-bright);
+  border-left: 4px solid #ffd700;
   padding: 20px;
   width: 85%;
   margin: 24px auto;
-  color: var(--text-silver);
+  color: #e0e0e0;
 }
 
 .quota-box {
-  border-left: 2px solid var(--gold-main);
+  border-left: 2px solid #d4af37;
   padding: 15px;
   width: 85%;
   margin: 24px auto;
   text-align: left;
   font-family: "Courier New", monospace;
   font-size: 0.9rem;
-  color: var(--text-silver);
+  color: #e0e0e0;
 }
 
 .quota-box strong {
-  color: var(--gold-bright);
+  color: #ffd700;
 }
 
 .plusminus-leaderboard-container {
