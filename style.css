@@ -494,6 +494,32 @@ main {
   font-size: 0.9rem;
 }
 
+.text-forty-plus-minus-one strong {
+  color: var(--gold-bright);
+}
+.text-forty-plus-minus-one {
+  border-left: 4px solid var(--gold-bright);
+  padding: 20px;
+  width: 85%;
+  margin: 24px auto;
+  color: var(--text-silver);
+}
+
+.quota-box {
+  border-left: 2px solid var(--gold-main);
+  padding: 15px;
+  width: 85%;
+  margin: 24px auto;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  color: var(--text-silver);
+}
+
+.quota-box strong {
+  color: var(--gold-bright);
+}
+
 .plusminus-leaderboard-container {
   background-color: #1e1e1e;
   border: 2px solid #333;
