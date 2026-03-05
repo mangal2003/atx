@@ -431,3 +431,55 @@ fetch("plusminusWinners.txt")
     document.getElementById("plusminus-winners-list").innerHTML =
       '<div class="plusminus-loading-text">Error loading data.</div>';
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("mousedown", (e) => {
+    document.body.classList.add("cursor-click");
+    // Spawn the hit effect
+    const hit = document.createElement("div");
+    hit.className = "click-ripple";
+    hit.style.left = `${e.clientX}px`;
+    hit.style.top = `${e.clientY}px`;
+    document.body.appendChild(hit);
+    setTimeout(() => hit.remove(), 300);
+  });
+
+  window.addEventListener("mouseup", () => {
+    document.body.classList.remove("cursor-click");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  let lastX = 0;
+  let lastY = 0;
+
+  // Listener for both Mouse and Touch (Mobile)
+  const handleMove = (e) => {
+    // Get coordinates for mouse or first touch point
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+    // Only spawn a particle if the cursor has moved at least 10px
+    const dist = Math.sqrt(Math.pow(x - lastX, 2) + Math.pow(y - lastY, 2));
+
+    if (dist > 10) {
+      spawnParticle(x, y);
+      lastX = x;
+      lastY = y;
+    }
+  };
+
+  function spawnParticle(x, y) {
+    const p = document.createElement("div");
+    p.className = "trail-particle";
+    p.style.left = `${x}px`;
+    p.style.top = `${y}px`;
+    document.body.appendChild(p);
+
+    // Remove particle after animation ends
+    setTimeout(() => p.remove(), 600);
+  }
+
+  window.addEventListener("mousemove", handleMove);
+  window.addEventListener("touchmove", handleMove);
+});
