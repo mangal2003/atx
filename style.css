@@ -1,48 +1,10 @@
-
-.animateLogo {
-  font-size: 2rem;
-  font-weight: 800;
-  text-decoration: none;
-  margin: 2rem auto;
-  background: linear-gradient(
-    90deg,
-    #ffd700,
-    #daa00d,
-    #ffffff,
-    #daa00d,
-    #ffd700
-  );
-
-  background-size: 200% auto;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-  animation: shine 5s linear infinite;
+*{
+  background-color:#000;
+  color:#fff;
 }
-
 .aboutATX{
   color: #ffffff;
   margin: 2rem auto;
   text-align:center;
   width:85%;
 }
-
-.goldText {
-  /* 1. The Font */
-  font-family: "Cinzel", serif; /* Or any bold, serif font looks best in gold */
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 1.7rem; /* Needs to be big to see the gradient details */
-
-  /* 2. The Perfect Ratio Gradient */
-  background: linear-gradient(
-    to right,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
-
